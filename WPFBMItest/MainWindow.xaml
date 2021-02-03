@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFBMItest"
+        xmlns:con="clr-namespace:WPFBMItest.Converters"
         xmlns:vm="clr-namespace:WPFBMItest.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="300">
@@ -11,6 +12,9 @@
     <Window.DataContext >
         <vm:MainViewModel />
     </Window.DataContext>
+    <Window.Resources>
+        <con:BMIColor x:Key="BMIC"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -38,7 +42,8 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="BMI:" TextAlignment="Center" FontSize="15"/>
-            <TextBlock Grid.Row="1" TextAlignment="Center" FontSize="20" Text="{Binding Result}"/>
+            <TextBlock Grid.Row="1" TextAlignment="Center" FontSize="20" Text="{Binding Result}"
+                       Foreground="{Binding Result,Converter={StaticResource BMIC}}"/>
         </Grid>
             
     </Grid>
